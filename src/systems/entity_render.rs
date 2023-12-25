@@ -14,7 +14,7 @@ pub fn entity_render(ecs: &SubWorld, #[resource] camera: &Camera) {
     draw_batch.target(1);
     renderables
         .iter(ecs)
-        .filter(|(pos, _)| player_fov.visible_tiles.contains(pos))
+        .filter(|(pos, _)| player_fov.visible_tiles.contains(&pos))
         .for_each(|(pos, render)| {
             draw_batch.set(*pos - offset, render.color, render.glyph);
         });
